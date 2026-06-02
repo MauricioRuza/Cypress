@@ -18,7 +18,7 @@ describe("My fifth Test Suite",()=>{
                 })
             }
         })
-        // cy.get('div .mouse-hover-content').invoke('show')
+        cy.get('div .mouse-hover-content').invoke('show')
         cy.contains('Top').click() 
         cy.url().should('include','top')
         cy.contains('Reload').click({force: true}) 

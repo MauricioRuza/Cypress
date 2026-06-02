@@ -33,3 +33,14 @@ Cypress.Commands.add('loginViaSession', (email, password) => {
     cy.url().should('include', '/grocery-list')
   })
 })
+
+// Login helper for EventHub/spec2.cy.js
+Cypress.Commands.add('loginViaSessionEventHub', (email, password) => {
+  cy.session(['eventhub', email, password], () => {
+    cy.visit('https://eventhub.rahulshettyacademy.com/login')
+    cy.get('[name=email]').type(email)
+    cy.get('[name=password]').type(password)
+    cy.get('[type=submit]').click()
+  })
+})
+

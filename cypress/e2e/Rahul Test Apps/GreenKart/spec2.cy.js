@@ -17,7 +17,10 @@ describe("My first Test Suite",()=>{
         cy.get('.cart-icon > img').click()
         cy.get('.cart-preview').find('button').click()
         cy.contains('Place Order').click()
-        cy.get('select')
+        cy.get('select').select('Brazil')
+        cy.get('[type="checkbox"]').click()
+        cy.get('button').contains('Proceed').click()
+        cy.get('[style="color:green;font-size:25px"] > a').click()
     })
     
 

@@ -1,4 +1,4 @@
-describe('EventHub Login', function () {
+describe('EventHub event creation', function () {
   
   beforeEach(() => {
     cy.fixture('EventHubFixture').then((data) => {
@@ -13,13 +13,16 @@ describe('EventHub Login', function () {
     cy.get('#nav-events').click()
     cy.get('[href="/admin/events"]').click()
     cy.get('[data-testid="event-title-input"]').type('Test Event')
-    cy.get('[data-testid="event-description-input"]').type('This is a test event created by Cypress.')
-    cy.get('[data-testid="event-date-input"]').type('2024-12-31')
-    cy.get('[data-testid="event-time-input"]').type('18:00')
-    cy.get('[data-testid="event-location-input"]').type('Test Location')
-    cy.get('[data-testid="event-category-select"]').select('Conference')
-    cy.get('[data-testid="create-event-button"]').click()
+    cy.get('textarea').type('This is a test event created by Cypress.')
+    cy.get('[id="price-($)"]').type('455.00')
+    cy.get('#total-seats').type('100')
+    cy.get('#city').type('Test Location')
+    cy.get('#venue').type('Test Location')
+    cy.get('#category').select('Conference')
+    cy.get('[id="event-date-&-time"]').type('2027-12-31T18:00')
+    cy.get('#add-event-btn').click()
     cy.contains('Test Event').should('be.visible')
-
+    cy.get('#delete-event-btn').click()
+    cy.get('#confirm-dialog-yes').click()
   })
 })
